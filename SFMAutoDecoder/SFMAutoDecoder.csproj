@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <ApplicationIcon>savc_to_json_converter.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="savc_to_json_converter.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SaveFileManager" Version="1.1.4" />
+  </ItemGroup>
+
+</Project>
