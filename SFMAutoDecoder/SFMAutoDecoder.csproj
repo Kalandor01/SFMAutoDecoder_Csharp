@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <ApplicationIcon>savc_to_json_converter.ico</ApplicationIcon>
@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="SaveFileManager" Version="1.1.4" />
+    <PackageReference Include="FileManager" Version="2.1.3" />
   </ItemGroup>
 
 </Project>
