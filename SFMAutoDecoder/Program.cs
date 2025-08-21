@@ -79,14 +79,16 @@ internal class Program
         var version = int.Parse(DecodeLine(byteLines.ElementAt(0), r, encoding));
         var seedNum = BigInteger.Parse(DecodeLine(byteLines.ElementAt(1), r, encoding));
         var isZipped = false;
-        if (byteLines.Count > 2)
+        if (byteLines.Count <= 2)
         {
-            try
-            {
-                isZipped = int.Parse(DecodeLine(byteLines.ElementAt(2), r, encoding)) == 1;
-            }
-            catch { }
+            return (version, isZipped, seedNum);
         }
+
+        try
+        {
+            isZipped = int.Parse(DecodeLine(byteLines.ElementAt(2), r, encoding)) == 1;
+        }
+        catch { }
         return (version, isZipped, seedNum);
     }
 
@@ -146,18 +148,20 @@ internal class Program
             {
                 Console.WriteLine(line);
             }
-            if (Input($"\n\nDo you want to save the results as \"{justFileName}{DECODED_EXT}\"?(Y/N): ")?.ToUpper() == "Y")
+
+            if (Input($"\n\nDo you want to save the results as \"{justFileName}{DECODED_EXT}\"?(Y/N): ")?.ToUpper() != "Y")
             {
-                using (var fileWriter = new StreamWriter($"{filePathNoExtension}{DECODED_EXT}"))
-                {
-                    foreach (var line in fileData)
-                    {
-                        fileWriter.WriteLine(line);
-                    }
-                }
-                Utils.PressKey("SAVED!");
+                return;
             }
-            return;
+
+            using (var fileWriter = new StreamWriter($"{filePathNoExtension}{DECODED_EXT}"))
+            {
+                foreach (var line in fileData)
+                {
+                    fileWriter.WriteLine(line);
+                }
+            }
+            Utils.PressKey("SAVED!");
         }
         // auto mode
         else
